@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Garet";
+  src: url("/assets/fonts/Garet.ttf");
+}
+
+@font-face {
+  font-family: "Garet-Heavy";
+  src: url("/assets/fonts/Garet-Heavy.ttf");
+}
+
+@font-face {
+  font-family: "Sofija-Italic";
+  src: url("/assets/fonts/Sofija-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Rushink";
+  src: url("/assets/fonts/Rushink-Demo.ttf");
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+html,
+body {
+  @apply bg-white font-garet;
+}
+
+.wrap {
+  display: grid;
+  & > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
