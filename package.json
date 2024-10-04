@@ -8,12 +8,10 @@
     "dev": "remix vite:dev",
     "prod": "remix vite:dev --mode production",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start:remix": "remix-serve ./build/server/index.js",
-    "start": "netlify serve",
+    "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@netlify/remix-adapter": "^2.5.1",
     "@paypal/react-paypal-js": "^8.7.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-popover": "^1.1.1",
