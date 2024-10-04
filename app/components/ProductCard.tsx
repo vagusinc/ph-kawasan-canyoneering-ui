@@ -54,7 +54,10 @@ const ProductCard = ({ product, compact, onClick }: IProductCard) => {
     >
       <div className={compact ? "h-40" : "h-80"}>
         <img
-          src={product.attributes?.tour_images.data?.[0]?.attributes.url}
+          src={
+            product.attributes?.tour_images.data?.[0]?.attributes.formats.large
+              .url
+          }
           alt="product"
           className="h-full w-full object-cover"
         />

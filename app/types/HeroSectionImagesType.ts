@@ -1,3 +1,6 @@
+import { TItemType } from "./StrapiTypes";
+import { TTourImages } from "./TourTypes";
+
 export type THeroSectionImage = {
-  url: string;
+  image: { data: TItemType<TTourImages> };
 };

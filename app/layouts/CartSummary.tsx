@@ -10,8 +10,7 @@ const CartSummary = () => {
     return cartItems.reduce((total, item) => {
       const tourPriceTotal = item.pricePerPax * item.quantity;
 
-      const pickupAndDropoffTotal =
-        item.pickupAndDropoff?.price * item.pickupAndDropoff?.quantity;
+      const pickupAndDropoffTotal = item.pickupAndDropoff?.price;
 
       const addonsTotal = item.addons
         ? item.addons.reduce(

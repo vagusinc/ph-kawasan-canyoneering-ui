@@ -36,7 +36,7 @@ const Expectations = (props: IExpectationsProps) => {
               <div className="flex flex-col gap-4 w-1/2 overflow-hidden">
                 {/* first and second image */}
                 <div className="flex items-center gap-4 h-1/2">
-                  <div className="bg-red-500 w-1/2 h-full rounded-xl overflow-hidden">
+                  <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
                         tour.attributes?.tour_images.data.at(1)?.attributes.url
@@ -45,7 +45,7 @@ const Expectations = (props: IExpectationsProps) => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="bg-red-500 w-1/2 h-full rounded-xl overflow-hidden">
+                  <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
                         tour.attributes?.tour_images.data.at(2)?.attributes.url
@@ -58,7 +58,7 @@ const Expectations = (props: IExpectationsProps) => {
 
                 {/* third and fourth image */}
                 <div className="flex items-center gap-4 h-1/2">
-                  <div className="bg-red-500 w-1/2 h-full rounded-xl overflow-hidden">
+                  <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
                         tour.attributes?.tour_images.data.at(3)?.attributes.url
@@ -67,7 +67,7 @@ const Expectations = (props: IExpectationsProps) => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="bg-red-500 w-1/2 h-full rounded-xl overflow-hidden">
+                  <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
                         tour.attributes?.tour_images.data.at(4)?.attributes.url

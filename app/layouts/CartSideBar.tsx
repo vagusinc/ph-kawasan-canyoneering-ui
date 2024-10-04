@@ -40,8 +40,7 @@ const CartSideBar = ({ tours }: ICartSideBarProps) => {
     return cartItems.reduce((total, item) => {
       const tourPriceTotal = item.pricePerPax * item.quantity;
 
-      const pickupAndDropoffTotal =
-        item.pickupAndDropoff?.price * item.pickupAndDropoff?.quantity;
+      const pickupAndDropoffTotal = item.pickupAndDropoff?.price;
 
       const addonsTotal = item.addons
         ? item.addons.reduce(
@@ -313,10 +312,7 @@ const CartSideBar = ({ tours }: ICartSideBarProps) => {
                   <p className="flex-grow">Pick-up and drop-off:</p>
                   <p>
                     {item.pickupAndDropoff.price !== 0
-                      ? `₱${
-                          item.pickupAndDropoff.price *
-                          item.pickupAndDropoff.quantity
-                        }`
+                      ? `₱${item.pickupAndDropoff.price}`
                       : "FREE"}
                   </p>
                 </div>

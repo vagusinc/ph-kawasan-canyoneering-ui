@@ -4,7 +4,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { json, useLoaderData, useLocation } from "@remix-run/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { getAssetUrl, getHeroSectionImages } from "~/.server";
+import { getHeroSectionImages } from "~/.server";
 import { getAsset } from "~/.server/api/assets";
 import { getFAQs } from "~/.server/api/faqs";
 import { getReviews } from "~/.server/api/reviews";
@@ -20,7 +20,6 @@ import {
   HeroSection,
   Reviews,
 } from "~/layouts";
-import { TFileType } from "~/types/StrapiTypes";
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,19 +34,15 @@ export const loader = async () => {
     getTours(),
     getReviews(),
     getFAQs(),
-    getAsset(3),
+    getAsset(5),
   ]);
-  const videoHeadlineUrl = getAssetUrl(videoHeadline?.url || "");
-  const newVideoHeadlineAsset: TFileType | undefined = videoHeadline
-    ? { ...videoHeadline, url: videoHeadlineUrl }
-    : undefined;
 
   return json({
     heroImages: heroImages?.data || [],
     tours: tours?.data || [],
     reviews: reviews?.data || [],
     faqs: faqs?.data || [],
-    videoHeadline: newVideoHeadlineAsset,
+    videoHeadline: videoHeadline,
   });
 };
 
@@ -72,7 +67,9 @@ export default function Index() {
         "Experience great heights of excitement and thrilling adventure in Kawasan, Cebu.",
       ctaText: "BOOK AN APPOINTMENT",
       ctaHandler: () => handleNavClick("services"),
-      backgroundImages: heroImages.map((heroimage) => heroimage.attributes.url),
+      backgroundImages: heroImages.map(
+        (heroimage) => heroimage.attributes.image.data.attributes.url
+      ),
     };
   }, [heroImages]);
 
@@ -187,7 +184,7 @@ export default function Index() {
         ref={heroSectionRef}
       />
       <FeaturedServices ref={servicesSectionRef} products={tours} />
-      <Expectations tours={[tours[0], tours[1]]} />
+      <Expectations tours={tours.length > 0 ? tours.slice(0, 2) : []} />
       <AboutUs ref={aboutUsSectionRef} />
       <Reviews reviews={reviews} />
       <FAQ ref={faqSectionRef} questions={faqs} />

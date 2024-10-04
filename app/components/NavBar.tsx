@@ -37,7 +37,7 @@ const NavBar = (props: INavBarProps) => {
 
   return (
     <div
-      className={`w-screen fixed flex items-center px-48 py-8 z-20 ${
+      className={`w-screen fixed flex items-center px-48 py-8 z-50 ${
         isElevated ? "bg-white shadow-lg py-2" : ""
       }`}
     >

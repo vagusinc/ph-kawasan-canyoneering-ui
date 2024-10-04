@@ -1,6 +1,6 @@
 import { format } from "date-fns/format";
 import deleteIcon from "icons/trash.svg";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Select,
   SelectContent,

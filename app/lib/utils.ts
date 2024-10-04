@@ -58,7 +58,9 @@ export function getPickupAndDropoffPrice(
   if (!pickupAndDropoffPackage || pickupAndDropoffPackage.length === 0)
     return 0;
 
-  let price = pickupAndDropoffPackage.at(0)!.attributes.price;
+  let price =
+    pickupAndDropoffPackage.find((p) => p.attributes.minimumPersons <= 2)
+      ?.attributes.price || 0;
 
   pickupAndDropoffPackage.forEach((pkg) => {
     if (
@@ -87,4 +89,10 @@ export function getAddonsTotalPriceFromCartItem(addons: TCartItem["addons"]) {
   );
 
   return totalPrice;
+}
+
+export function isNullOrEmpty(value: string | undefined) {
+  if (!value || value?.length === 0) return true;
+
+  return false;
 }

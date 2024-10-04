@@ -1,6 +1,7 @@
 import { TCartItem } from "~/types/CartItem";
 
 export const CART_ITEMS_KEY = "phkc_cart_items";
+export const CUSTOMER_RESERVATION_FORM_KEY = "phkc_customer_reservation_form";
 
 export const getCartItems = () => {
   const cartItemsString = localStorage.getItem(CART_ITEMS_KEY);

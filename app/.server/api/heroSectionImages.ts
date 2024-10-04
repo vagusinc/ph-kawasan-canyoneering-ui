@@ -6,7 +6,9 @@ export async function getHeroSectionImages(): Promise<
   TPaginatedResponse<THeroSectionImage> | undefined
 > {
   try {
-    const response = await axiosServerClient.get("/hero-section-images");
+    const response = await axiosServerClient.get(
+      "/hero-section-images?populate=image"
+    );
     return response.data;
   } catch (error) {
     console.log(error);
