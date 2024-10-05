@@ -1,4 +1,4 @@
-import { axiosServerClient } from "~/config";
+import { axiosServerClient } from "~/config/.server";
 import { THeroSectionImage } from "~/types/HeroSectionImagesType";
 import { TPaginatedResponse } from "~/types/StrapiTypes";
 

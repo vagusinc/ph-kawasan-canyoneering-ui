@@ -1,11 +1,11 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { json, useLoaderData, useNavigate } from "@remix-run/react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { ClientOnly } from "remix-utils/client-only";
 
 import { getTours } from "~/.server/api/tours";
 import { FormInput, NavBar, TNavBarItems } from "~/components";
-import { axiosClient } from "~/config/.client";
+import { axiosClient } from "~/config";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { CartSummary, Footer } from "~/layouts";
 import { isNullOrEmpty } from "~/lib/utils";

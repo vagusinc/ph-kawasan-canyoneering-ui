@@ -1,4 +1,4 @@
-import { axiosServerClient } from "~/config";
+import { axiosServerClient } from "~/config/.server";
 import { TPaginatedResponse, TSingleResponse } from "~/types/StrapiTypes";
 import { TTour } from "~/types/TourTypes";
 

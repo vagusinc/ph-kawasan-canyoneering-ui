@@ -1,4 +1,4 @@
-import { axiosServerClient } from "~/config";
+import { axiosServerClient } from "~/config/.server";
 import { TReview } from "~/types/ReviewTypes";
 import { TPaginatedResponse } from "~/types/StrapiTypes";
 

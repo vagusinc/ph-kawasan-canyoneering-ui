@@ -1,4 +1,4 @@
-import { axiosServerClient } from "~/config";
+import { axiosServerClient } from "~/config/.server";
 import { TFileType } from "~/types/StrapiTypes";
 
 export async function getAssets(): Promise<TFileType[] | undefined> {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-export class ApiError<T> extends Error {
+class ApiError<T> extends Error {
   options?: T;
 
   constructor(message: string, options?: T) {
