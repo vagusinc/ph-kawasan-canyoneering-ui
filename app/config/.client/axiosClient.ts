@@ -10,7 +10,7 @@ export class ApiError<T> extends Error {
   }
 }
 
-export const axiosClient = axios.create({
+const axiosClient = axios.create({
   baseURL: window.ENV.STRAPI_API_URL,
 });
 
@@ -36,3 +36,5 @@ function onRequestRejected(error: AxiosError) {
     error?.response?.data as any
   );
 }
+
+export { axiosClient };
