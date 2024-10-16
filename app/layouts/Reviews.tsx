@@ -18,7 +18,7 @@ interface IReviewsProps {
 
 const Reviews = (props: IReviewsProps) => {
   return (
-    <div className="p-40">
+    <div className="px-8 md:px-12 lg:px-40 py-16 lg:py-40">
       {props.average && (
         <div className="flex flex-col w-full items-center justify-center mb-16">
           <h1 className="font-bold text-black text-3xl mb-1">
@@ -35,7 +35,10 @@ const Reviews = (props: IReviewsProps) => {
       <Carousel className="w-full">
         <CarouselContent>
           {props.reviews.map((review, index) => (
-            <CarouselItem key={index} className="basis-1/3">
+            <CarouselItem
+              key={index}
+              className="basis-full md:basis-1/2 lg:basis-1/3"
+            >
               <GoogleReviewCard {...review.attributes} />
             </CarouselItem>
           ))}

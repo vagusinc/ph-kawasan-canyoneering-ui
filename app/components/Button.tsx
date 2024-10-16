@@ -9,7 +9,7 @@ const Button = (
     <BaseButton
       {...props}
       className={cn(
-        "px-8 py-4 bg-primary text-white text-base rounded-md hover:bg-primary-600",
+        "px-8 py-4 bg-primary text-white text-sm md:text-base rounded-md hover:bg-primary-600",
         props.className
       )}
     >

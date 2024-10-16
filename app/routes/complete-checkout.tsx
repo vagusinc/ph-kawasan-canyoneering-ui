@@ -30,11 +30,11 @@ export default function CompleteCheckout() {
         elevateBackground={true}
         onItemClick={handleNavClick}
       />
-      <div className="flex flex-col h-auto px-48 py-40 pt-56 items-center justify-center gap-2">
-        <h1 className="font-rushink text-7xl text-primary mb-10">
+      <div className="flex flex-col h-auto px-8 md:px-12 lg:px-48 py-40 md:pt-56 items-center justify-center gap-2">
+        <h1 className="font-rushink text-center text-3xl md:text-5xl lg:text-7xl text-primary mb-10">
           THANK YOU FOR BOOKING WITH US
         </h1>
-        <p>
+        <p className="text-center">
           If you need to make any changes or have any special request, feel free
           to reach us through +6391772221704. We’re here to help!
         </p>

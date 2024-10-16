@@ -99,8 +99,8 @@ export default function Checkout() {
         elevateBackground={true}
         onItemClick={handleNavClick}
       />
-      <div className="flex h-auto px-48 py-40 z-10">
-        <div className="basis-1/2 flex-shrink-0 h-full border-r border-black pr-8">
+      <div className="flex flex-col md:flex-row h-auto px-8 md:px-12 lg:px-48 py-40 z-10">
+        <div className="md:basis-1/2 flex-shrink-0 h-full md:border-r md:border-black md:pr-8">
           <p className="font-bold text-xl text-black mb-5">Reservation Form</p>
           <div className="flex flex-col gap-3 mb-16">
             <FormInput
@@ -202,9 +202,8 @@ export default function Checkout() {
               </>
             )}
           </ClientOnly>
-          {/* <Button className="w-full">Proceed to payment</Button> */}
         </div>
-        <div className="basis-1/2 flex-shrink-0 h-full pl-8 overflow-auto">
+        <div className="md:basis-1/2 flex-shrink-0 h-full md:pl-8 overflow-auto">
           <ClientOnly>{() => <CartSummary />}</ClientOnly>
         </div>
       </div>

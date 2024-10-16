@@ -3,12 +3,12 @@ import { forwardRef } from "react";
 
 const AboutUs = forwardRef<HTMLDivElement, object>((_, ref) => {
   return (
-    <div ref={ref} className="py-10 pb-0 px-60 flex flex-col">
-      <h1 className="self-center font-rushink text-primary text-5xl mb-16">
+    <div ref={ref} className="py-10 pb-0 px-8 md:px-12 lg:px-60 flex flex-col">
+      <h1 className="self-center font-rushink text-primary text-2xl md:text-5xl mb-8 lg:mb-16">
         ABOUT US
       </h1>
 
-      <p className="text-black text-lg">
+      <p className="text-black text-base text-center md:text-lg">
         We specialize in organizing and facilitating travel experiences for
         individuals or groups visiting Cebu and Bohol. We offer a wide range of
         services such as arranging transportation, planning itineraries, and

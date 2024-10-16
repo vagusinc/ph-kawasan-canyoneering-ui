@@ -52,7 +52,7 @@ const ProductCard = ({ product, compact, onClick }: IProductCard) => {
         onClick ? "cursor-pointer" : ""
       }`}
     >
-      <div className={compact ? "h-40" : "h-80"}>
+      <div className={compact ? "h-40" : "h-40 md:h-80"}>
         <img
           src={
             product.attributes?.tour_images.data?.[0]?.attributes.formats.large
@@ -62,7 +62,11 @@ const ProductCard = ({ product, compact, onClick }: IProductCard) => {
           className="h-full w-full object-cover"
         />
       </div>
-      <div className={`bg-white flex-col py-3 ${compact ? "px-4" : "px-8"}`}>
+      <div
+        className={`bg-white flex-col py-3 ${
+          compact ? "px-4" : "px-4 lg:px-8"
+        }`}
+      >
         <p className="text-xs text-neutral">{product.attributes?.category}</p>
         <p className="text-black text-base line-clamp-1">
           {product.attributes?.name}

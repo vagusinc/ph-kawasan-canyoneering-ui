@@ -19,6 +19,7 @@ import coloredLogo from "images/logo-colored.png";
 import { TCartItem } from "~/types/CartItem";
 import { TItemType } from "~/types/StrapiTypes";
 import { TTour } from "~/types/TourTypes";
+import { useNavigate } from "@remix-run/react";
 
 export type TNavBarItems = "home" | "services" | "about us" | "faq";
 
@@ -32,12 +33,13 @@ interface INavBarProps {
 const NavBar = (props: INavBarProps) => {
   const { isSmall } = useDetectScroll();
   const [cartItems] = useLocalStorage<TCartItem[]>(CART_ITEMS_KEY, []);
+  const navigate = useNavigate();
 
   const isElevated = props.elevateBackground || isSmall;
 
   return (
     <div
-      className={`w-screen fixed flex items-center px-48 py-8 z-50 ${
+      className={`w-screen fixed flex items-center px-8 lg:px-48 py-8 z-50 ${
         isElevated ? "bg-white shadow-lg py-2" : ""
       }`}
     >
@@ -46,13 +48,22 @@ const NavBar = (props: INavBarProps) => {
           isElevated ? "text-black" : "text-white"
         } text-base`}
       >
-        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white overflow-hidden">
-          <img src={coloredLogo} alt="logo" className="object-cover" />
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate("/")}
+          className="flex items-center justify-center w-8 h-8 md:w-16 md:h-16 rounded-full bg-white overflow-hidden"
+        >
+          <img
+            src={coloredLogo}
+            alt="logo"
+            className="w-full h-full object-cover"
+          />
         </div>
         <span
           className={`${
             props.activeLink === "home" ? "text-primary" : ""
-          } cursor-pointer`}
+          } cursor-pointer hidden md:block`}
           role="button"
           onClick={() => props.onItemClick?.("home")}
           tabIndex={0}
@@ -62,7 +73,7 @@ const NavBar = (props: INavBarProps) => {
         <span
           className={`${
             props.activeLink === "services" ? "text-primary" : ""
-          } cursor-pointer`}
+          } cursor-pointer hidden md:block`}
           role="button"
           onClick={() => props.onItemClick?.("services")}
           tabIndex={0}
@@ -72,7 +83,7 @@ const NavBar = (props: INavBarProps) => {
         <span
           className={`${
             props.activeLink === "about us" ? "text-primary" : ""
-          } cursor-pointer`}
+          } cursor-pointer hidden md:block`}
           role="button"
           onClick={() => props.onItemClick?.("about us")}
           tabIndex={0}
@@ -82,7 +93,7 @@ const NavBar = (props: INavBarProps) => {
         <span
           className={`${
             props.activeLink === "faq" ? "text-primary" : ""
-          } cursor-pointer`}
+          } cursor-pointer hidden md:block`}
           role="button"
           onClick={() => props.onItemClick?.("faq")}
           tabIndex={0}
@@ -94,7 +105,11 @@ const NavBar = (props: INavBarProps) => {
         <Sheet>
           <SheetTrigger>
             <div className="relative">
-              <img src={shoppingBag} alt="cart icon" className="w-8 h-8" />
+              <img
+                src={shoppingBag}
+                alt="cart icon"
+                className="w-6 h-6 md:w-8 md:h-8"
+              />
               <ClientOnly>
                 {() => (
                   <>

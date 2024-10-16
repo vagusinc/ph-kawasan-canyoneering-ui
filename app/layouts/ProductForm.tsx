@@ -185,13 +185,13 @@ const ProductForm = ({ product }: IProductForm) => {
   // }, [product.id]);
 
   return (
-    <div className="pt-40 px-40 grid grid-cols-2">
+    <div className="pt-40 px-8 md:px-12 lg:px-40 grid grid-cols-1 md:grid-cols-2 space-y-5 md:space-y-0">
       {productVideoUrls.length !== 0 ? (
         <VideoSelect videoUrls={productVideoUrls} />
       ) : (
         <PhotoSelect imageUrls={productPhotoUrls} />
       )}
-      <div className="flex flex-col px-8">
+      <div className="flex flex-col md:px-8">
         <h1 className="font-bold text-2xl text-black line-clamp-2">
           {product.attributes.name}
         </h1>
@@ -204,7 +204,7 @@ const ProductForm = ({ product }: IProductForm) => {
         <div className="space-y-5 mb-8">
           <div className="space-y-2">
             <p className="text-base text-black">Pick-up and drop-off:</p>
-            <div className="flex items-center gap-3 w-2/3">
+            <div className="flex items-center gap-3 w-full lg:w-2/3">
               <Select
                 onValueChange={(value) => {
                   setPickupAndDropoff(value);

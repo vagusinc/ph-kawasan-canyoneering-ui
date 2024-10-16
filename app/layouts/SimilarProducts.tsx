@@ -24,12 +24,17 @@ const SimilarProducts = (props: ISimilarProducts) => {
   };
 
   return (
-    <div className="pb-10 px-24 flex flex-col gap-10">
-      <h1 className="font-bold text-3xl text-black">You may also like</h1>
+    <div className="pb-10 px-8 md:px-12 lg:px-24 flex flex-col gap-4 md:gap-10">
+      <h1 className="font-bold text-lg md:text-3xl text-black">
+        You may also like
+      </h1>
       <Carousel className="w-full">
         <CarouselContent>
           {props.products.map((product, index) => (
-            <CarouselItem key={index} className="basis-1/4">
+            <CarouselItem
+              key={index}
+              className="basis-full md:basis-1/2 lg:basis-1/4"
+            >
               <ProductCard
                 product={product}
                 compact

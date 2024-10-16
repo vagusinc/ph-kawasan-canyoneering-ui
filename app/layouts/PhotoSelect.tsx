@@ -13,9 +13,9 @@ const PhotoSelect = ({ imageUrls }: IPhotoSelectProps) => {
   }, [imageUrls]);
 
   return (
-    <div className="px-8">
+    <div className="lg:px-8">
       {/* main video */}
-      <div className="w-full h-80 overflow-hidden rounded-md mb-10">
+      <div className="w-full h-80 overflow-hidden rounded-md mb-5 md:mb-10">
         <img
           src={mainImageUrl}
           alt="tour pic"

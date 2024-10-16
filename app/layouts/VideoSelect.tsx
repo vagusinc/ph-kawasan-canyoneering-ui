@@ -13,9 +13,9 @@ const VideoSelect = ({ videoUrls }: IVideoSelectProps) => {
   }, [videoUrls]);
 
   return (
-    <div className="px-8">
+    <div className="lg:px-8">
       {/* main video */}
-      <div className="w-full h-80 overflow-hidden rounded-md mb-10">
+      <div className="w-full h-80 overflow-hidden rounded-md mb-5 md:mb-10">
         <iframe
           title="main product video"
           className="w-full h-full"
@@ -24,7 +24,7 @@ const VideoSelect = ({ videoUrls }: IVideoSelectProps) => {
       </div>
 
       {/* video options */}
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-4 md:gap-10">
         {videoUrls
           .filter((url) => url !== mainVideoUrl)
           .map((link, index) => (
@@ -33,7 +33,7 @@ const VideoSelect = ({ videoUrls }: IVideoSelectProps) => {
               tabIndex={0}
               role="button"
               onClick={() => setMainVideoUrl(link)}
-              className="wrap h-24 w-full basis-1/4 overflow-hidden rounded-md"
+              className="wrap h-30 md:h-24 w-full basis-1/4 overflow-hidden rounded-md"
             >
               <iframe
                 title={`product video ${index}`}

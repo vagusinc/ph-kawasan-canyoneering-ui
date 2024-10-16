@@ -23,7 +23,7 @@ const DatePicker = ({ onDateChangeCallback }: IDatePickerProps) => {
         <Button
           variant={"outline"}
           className={cn(
-            "w-2/3 justify-start text-left font-normal",
+            "w-full md:w-2/3 justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
