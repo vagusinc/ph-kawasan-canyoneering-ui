@@ -8,7 +8,7 @@ interface IExpectationsProps {
 
 const Expectations = (props: IExpectationsProps) => {
   return (
-    <div className="py-10 px-8 md:px-12 lg:px-40 mb-[30rem] md:mb-0 lg:mb-52 flex flex-col h-screen">
+    <div className="py-10 px-8 md:px-12 lg:px-40 mb-[50rem] md:mb-0 lg:mb-52 flex flex-col h-screen">
       <h1 className="self-center font-rushink text-primary text-center text-2xl md:text-5xl mb-8 md:mb-12">
         WHAT TO EXPECT
       </h1>
