@@ -61,26 +61,33 @@ export default function Checkout() {
     }, 0);
   }, [cartItems]);
 
-  const handleSendCustomerData = async () => {
+  const handleSendCustomerData = async (
+    customerData: TCustomerReservationForm
+  ) => {
     if (
-      isNullOrEmpty(customerReservationForm.guestName) ||
-      isNullOrEmpty(customerReservationForm.contact) ||
-      isNullOrEmpty(customerReservationForm.accomodation) ||
-      isNullOrEmpty(customerReservationForm.eta) ||
-      isNullOrEmpty(customerReservationForm.emaillAddress)
-    )
+      isNullOrEmpty(customerData.guestName) ||
+      isNullOrEmpty(customerData.contact) ||
+      isNullOrEmpty(customerData.accomodation) ||
+      isNullOrEmpty(customerData.eta) ||
+      isNullOrEmpty(customerData.emaillAddress)
+    ) {
       return;
+    }
 
     try {
       const response = await axiosClient.post("/customer-reservation-forms", {
         data: {
-          guestName: customerReservationForm.guestName,
-          contact: customerReservationForm.contact,
-          accomodation: customerReservationForm.accomodation,
-          emailAddress: customerReservationForm.emaillAddress,
-          ETA: customerReservationForm.eta,
+          guestName: customerData.guestName,
+          contact: customerData.contact,
+          accomodation: customerData.accomodation,
+          emailAddress: customerData.emaillAddress,
+          ETA: customerData.eta,
         },
       });
+
+      navigate("/complete-checkout");
+      removeCart();
+      removeCustomerReservationForm();
     } catch (error) {
       console.log(error);
     }
@@ -106,6 +113,7 @@ export default function Checkout() {
             <FormInput
               required
               label="Lead Guest Name: "
+              value={customerReservationForm.guestName}
               onChange={(newValue) => {
                 setCustomerReservationForm({
                   ...customerReservationForm,
@@ -115,6 +123,7 @@ export default function Checkout() {
             />
             <FormInput
               required
+              value={customerReservationForm.contact}
               label="WhatsApp / Line / KakaoTalk / iMessage:"
               onChange={(newValue) => {
                 setCustomerReservationForm({
@@ -125,6 +134,7 @@ export default function Checkout() {
             />
             <FormInput
               required
+              value={customerReservationForm.accomodation}
               label="Accomodation: "
               onChange={(newValue) => {
                 setCustomerReservationForm({
@@ -135,6 +145,7 @@ export default function Checkout() {
             />
             <FormInput
               required
+              value={customerReservationForm.eta}
               label="Estimated Time Of Arrival (ETA): "
               onChange={(newValue) => {
                 setCustomerReservationForm({
@@ -145,6 +156,7 @@ export default function Checkout() {
             />
             <FormInput
               required
+              value={customerReservationForm.emaillAddress}
               label="Email Address: "
               subTitle="You will receive an email notification from us once reservation is confirmed."
               onChange={(newValue) => {
@@ -190,10 +202,18 @@ export default function Checkout() {
                       onApprove={async (data, actions) => {
                         const order = await actions.order?.capture();
                         return new Promise(() => {
-                          handleSendCustomerData();
-                          navigate("/complete-checkout");
-                          removeCart();
-                          removeCustomerReservationForm();
+                          const reservationFormString = localStorage.getItem(
+                            CUSTOMER_RESERVATION_FORM_KEY
+                          );
+                          const reservationForm = reservationFormString
+                            ? (JSON.parse(
+                                reservationFormString
+                              ) as TCustomerReservationForm)
+                            : undefined;
+
+                          if (!reservationForm) return;
+
+                          handleSendCustomerData(reservationForm);
                         });
                       }}
                     />
