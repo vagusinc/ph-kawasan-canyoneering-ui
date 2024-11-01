@@ -26,6 +26,7 @@ export default {
         "primary-100": "#F5E7F4",
         "primary-200": "#EBCEE9",
         "primary-300": "#ECE6F0",
+        "primary-400": "#E1B6DD",
         "primary-600": "#9E4297",
         neutral: "#908B8B",
       },

@@ -12,14 +12,7 @@ export type TPaginatedResponse<T> = {
 
 export type TSingleResponse<T> = {
   data: TItemType<T>;
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
+  meta: object;
 };
 
 export type TItemType<T> = {

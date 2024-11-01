@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { getHeroSectionImages } from "~/.server";
 import { getAsset } from "~/.server/api/assets";
+import { getBanner } from "~/.server/api/banner";
 import { getFAQs } from "~/.server/api/faqs";
 import { getReviews } from "~/.server/api/reviews";
 import { getTours } from "~/.server/api/tours";
@@ -29,13 +30,15 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const [heroImages, tours, reviews, faqs, videoHeadline] = await Promise.all([
-    getHeroSectionImages(),
-    getTours(),
-    getReviews(),
-    getFAQs(),
-    getAsset(5),
-  ]);
+  const [heroImages, tours, reviews, faqs, videoHeadline, banner] =
+    await Promise.all([
+      getHeroSectionImages(),
+      getTours(),
+      getReviews(),
+      getFAQs(),
+      getAsset(5),
+      getBanner(),
+    ]);
 
   return json({
     heroImages: heroImages?.data || [],
@@ -43,11 +46,12 @@ export const loader = async () => {
     reviews: reviews?.data || [],
     faqs: faqs?.data || [],
     videoHeadline: videoHeadline,
+    banner,
   });
 };
 
 export default function Index() {
-  const { heroImages, tours, reviews, faqs, videoHeadline } =
+  const { heroImages, tours, reviews, faqs, videoHeadline, banner } =
     useLoaderData<typeof loader>();
 
   const [activeLink, setActiveLink] = useState<TNavBarItems>("home");
@@ -176,6 +180,7 @@ export default function Index() {
       <NavBar
         tours={tours}
         activeLink={activeLink}
+        banner={banner}
         onItemClick={handleNavClick}
       />
       <HeroSection

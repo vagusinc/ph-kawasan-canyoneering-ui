@@ -7,3 +7,4 @@ export * from "./Question";
 export * from "./DatePicker";
 export * from "./Counter";
 export * from "./FormInput";
+export * from "./Banner";
