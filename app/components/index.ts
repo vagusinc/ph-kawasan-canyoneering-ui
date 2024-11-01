@@ -8,3 +8,4 @@ export * from "./DatePicker";
 export * from "./Counter";
 export * from "./FormInput";
 export * from "./Banner";
+export * from "./WhatsappFloatingButton";

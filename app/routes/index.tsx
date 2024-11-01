@@ -10,7 +10,7 @@ import { getBanner } from "~/.server/api/banner";
 import { getFAQs } from "~/.server/api/faqs";
 import { getReviews } from "~/.server/api/reviews";
 import { getTours } from "~/.server/api/tours";
-import { NavBar, TNavBarItems } from "~/components";
+import { NavBar, TNavBarItems, WhatsAppFloatingButton } from "~/components";
 import { useScrollOffset } from "~/hooks/useScrollOffset";
 import {
   AboutUs,
@@ -198,6 +198,7 @@ export default function Index() {
         onAboutUsClicked={() => handleNavClick("about us")}
         onFAQClicked={() => handleNavClick("faq")}
       />
+      <WhatsAppFloatingButton />
     </div>
   );
 }
