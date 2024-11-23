@@ -24,7 +24,10 @@ const Expectations = (props: IExpectationsProps) => {
               {/* main image */}
               <div className="wrap w-full md:w-1/2 h-full rounded-xl overflow-hidden">
                 <img
-                  src={tour.attributes?.tour_images.data.at(0)?.attributes.url}
+                  src={
+                    tour.attributes?.tour_images.data?.at(0)?.attributes.formats
+                      .large.url
+                  }
                   alt="main"
                   className="w-full min-h-full object-cover"
                 />
@@ -39,7 +42,8 @@ const Expectations = (props: IExpectationsProps) => {
                   <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
-                        tour.attributes?.tour_images.data.at(1)?.attributes.url
+                        tour.attributes?.tour_images.data?.at(1)?.attributes
+                          .formats.large.url
                       }
                       alt="main"
                       className="w-full h-full object-cover"
@@ -48,7 +52,8 @@ const Expectations = (props: IExpectationsProps) => {
                   <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
-                        tour.attributes?.tour_images.data.at(2)?.attributes.url
+                        tour.attributes?.tour_images.data?.at(2)?.attributes
+                          .formats.large.url
                       }
                       alt="main"
                       className="w-full h-full object-cover"
@@ -61,7 +66,8 @@ const Expectations = (props: IExpectationsProps) => {
                   <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
-                        tour.attributes?.tour_images.data.at(3)?.attributes.url
+                        tour.attributes?.tour_images.data?.at(3)?.attributes
+                          .formats.large.url
                       }
                       alt="main"
                       className="w-full h-full object-cover"
@@ -70,7 +76,8 @@ const Expectations = (props: IExpectationsProps) => {
                   <div className="w-1/2 h-full rounded-xl overflow-hidden">
                     <img
                       src={
-                        tour.attributes?.tour_images.data.at(4)?.attributes.url
+                        tour.attributes?.tour_images.data?.at(4)?.attributes
+                          .formats.large.url
                       }
                       alt="main"
                       className="w-full h-full object-cover"

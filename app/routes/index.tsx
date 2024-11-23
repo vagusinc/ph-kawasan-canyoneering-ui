@@ -2,10 +2,8 @@
 /* eslint-disable import/no-unresolved */
 import type { MetaFunction } from "@remix-run/node";
 import { json, useLoaderData, useLocation } from "@remix-run/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { getHeroSectionImages } from "~/.server";
-import { getAsset } from "~/.server/api/assets";
 import { getBanner } from "~/.server/api/banner";
 import { getFAQs } from "~/.server/api/faqs";
 import { getReviews } from "~/.server/api/reviews";
@@ -30,29 +28,23 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const [heroImages, tours, reviews, faqs, videoHeadline, banner] =
-    await Promise.all([
-      getHeroSectionImages(),
-      getTours(),
-      getReviews(),
-      getFAQs(),
-      getAsset(5),
-      getBanner(),
-    ]);
+  const [tours, reviews, faqs, banner] = await Promise.all([
+    getTours(),
+    getReviews(),
+    getFAQs(),
+    getBanner(),
+  ]);
 
   return json({
-    heroImages: heroImages?.data || [],
     tours: tours?.data || [],
     reviews: reviews?.data || [],
     faqs: faqs?.data || [],
-    videoHeadline: videoHeadline,
     banner,
   });
 };
 
 export default function Index() {
-  const { heroImages, tours, reviews, faqs, videoHeadline, banner } =
-    useLoaderData<typeof loader>();
+  const { tours, reviews, faqs, banner } = useLoaderData<typeof loader>();
 
   const [activeLink, setActiveLink] = useState<TNavBarItems>("home");
   const { state } = useLocation();
@@ -64,18 +56,13 @@ export default function Index() {
   const aboutUsSectionRef = useRef<HTMLDivElement | null>(null);
   const faqSectionRef = useRef<HTMLDivElement | null>(null);
 
-  const heroDetails = useMemo(() => {
-    return {
-      title: "PH KAWASAN CANYONEERING",
-      subTitle:
-        "Experience great heights of excitement and thrilling adventure in Kawasan, Cebu.",
-      ctaText: "BOOK AN APPOINTMENT",
-      ctaHandler: () => handleNavClick("services"),
-      backgroundImages: heroImages.map(
-        (heroimage) => heroimage.attributes.image.data.attributes.url
-      ),
-    };
-  }, [heroImages]);
+  const heroDetails = {
+    title: "PH KAWASAN CANYONEERING",
+    subTitle:
+      "Experience great heights of excitement and thrilling adventure in Kawasan, Cebu.",
+    ctaText: "BOOK AN APPOINTMENT",
+    ctaHandler: () => handleNavClick("services"),
+  };
 
   const handleNavClick = (section: TNavBarItems) => {
     const yOffset = -100;
@@ -183,11 +170,7 @@ export default function Index() {
         banner={banner}
         onItemClick={handleNavClick}
       />
-      <HeroSection
-        heroDetails={heroDetails}
-        videoHeadline={videoHeadline}
-        ref={heroSectionRef}
-      />
+      <HeroSection heroDetails={heroDetails} ref={heroSectionRef} />
       <FeaturedServices ref={servicesSectionRef} products={tours} />
       <Expectations tours={tours.length > 0 ? tours.slice(0, 2) : []} />
       <AboutUs ref={aboutUsSectionRef} />
