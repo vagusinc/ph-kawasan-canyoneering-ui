@@ -301,6 +301,10 @@ const ProductForm = ({ product }: IProductForm) => {
         </div>
         <Button onClick={handleAddToCart}>ADD TO CART</Button>
       </div>
+      <div className="px-0 lg:px-8 md:pt-10 flex flex-col gap-2">
+        <h1 className="text-lg lg:text-xl">Description:</h1>
+        <p>{product.attributes.description}</p>
+      </div>
     </div>
   );
 };

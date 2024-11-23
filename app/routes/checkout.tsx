@@ -8,7 +8,7 @@ import { FormInput, NavBar, TNavBarItems } from "~/components";
 import { axiosClient } from "~/config";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { CartSummary, Footer } from "~/layouts";
-import { isNullOrEmpty } from "~/lib/utils";
+import { convertCartItemsToRichTextJson, isNullOrEmpty } from "~/lib/utils";
 import { CART_ITEMS_KEY, CUSTOMER_RESERVATION_FORM_KEY } from "~/services";
 import { TCartItem } from "~/types/CartItem";
 import { TCustomerReservationForm } from "~/types/CustomerReservationForm";
@@ -62,7 +62,8 @@ export default function Checkout() {
   }, [cartItems]);
 
   const handleSendCustomerData = async (
-    customerData: TCustomerReservationForm
+    customerData: TCustomerReservationForm,
+    cartItems: TCartItem[]
   ) => {
     if (
       isNullOrEmpty(customerData.guestName) ||
@@ -82,6 +83,7 @@ export default function Checkout() {
           accomodation: customerData.accomodation,
           emailAddress: customerData.emaillAddress,
           ETA: customerData.eta,
+          tourBookingDetails: convertCartItemsToRichTextJson(cartItems),
         },
       });
 
@@ -213,7 +215,7 @@ export default function Checkout() {
 
                           if (!reservationForm) return;
 
-                          handleSendCustomerData(reservationForm);
+                          handleSendCustomerData(reservationForm, cartItems);
                         });
                       }}
                     />

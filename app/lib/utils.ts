@@ -96,3 +96,92 @@ export function isNullOrEmpty(value: string | undefined) {
 
   return false;
 }
+
+export function convertCartItemsToRichTextJson(cartItems: TCartItem[]) {
+  const bookingDetailsString = cartItems.flatMap((cartItem) => {
+    const tourNameObj = {
+      type: "paragraph",
+      children: [
+        {
+          bold: true,
+          text: `Tour name: ${cartItem.tourName}`,
+          type: "text",
+          underline: true,
+        },
+      ],
+    };
+
+    const quantityObj = {
+      type: "paragraph",
+      children: [
+        {
+          text: `Number of pax: ${cartItem.quantity}`,
+          type: "text",
+        },
+      ],
+    };
+    const tourDateObj = {
+      type: "paragraph",
+      children: [
+        {
+          text: `Tour date: ${cartItem.date.toString()}`,
+          type: "text",
+        },
+      ],
+    };
+    const tourPickupAndDropoffObj = {
+      type: "paragraph",
+      children: [
+        {
+          text: `Pickup and drop-off: ${cartItem.pickupAndDropoff.name} ${
+            cartItem.pickupAndDropoff.name === "Meet on-site"
+              ? ""
+              : `(${cartItem.pickupAndDropoff.quantity} pax)`
+          }`,
+          type: "text",
+        },
+      ],
+    };
+    const tourAddOnsTitleObj = {
+      type: "paragraph",
+      children: [
+        {
+          text: "Addons: ",
+          type: "text",
+        },
+      ],
+    };
+
+    const tourAddOnsListObj = {
+      type: "list",
+      format: "unordered",
+      children: cartItem.addons?.map((addon) => {
+        return {
+          type: "list-item",
+          children: [
+            {
+              text: `${addon.name}: ${addon.pax} pax`,
+              type: "text",
+            },
+          ],
+        };
+      }),
+    };
+
+    const richTextJsonArray: any[] = [
+      tourNameObj,
+      quantityObj,
+      tourDateObj,
+      tourPickupAndDropoffObj,
+      tourAddOnsTitleObj,
+    ];
+
+    if (cartItem.addons != undefined && cartItem.addons.length > 0) {
+      richTextJsonArray.push(tourAddOnsListObj);
+    }
+
+    return richTextJsonArray;
+  });
+
+  return bookingDetailsString;
+}
